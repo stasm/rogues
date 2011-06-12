@@ -12,7 +12,7 @@ var Player = exports.Player = function(socket, name, world) {
     this.socket.on('data', function (string) {
         var message = string.trim();
         self.broadcast(self.name + ' says: ' + message);
-        self.send('> you say: ' + message);
+        self.send('you say: ' + message);
     });
     this.socket.on('end', function() {
         self.world.removePlayer(self);
