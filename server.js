@@ -1,13 +1,7 @@
 var net = require('net'),
-    World = require('./models/world').World,
-    Player = require('./models/player').Player;
+    Server = require('./lib/server').Server,
+    World = require('./models/world').World;
 
 var world = new World();
-
-net.createServer(function (socket) {
-    socket.write('> What will your name be today?\r\n');
-    socket.once('data', function (buffer) {
-        var name = buffer.toString('utf8').trim();
-        var player = new Player(socket, name, world);
-    });
-}).listen(8008);
+var server = new Server(world);
+server.start();
