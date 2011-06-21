@@ -9,6 +9,8 @@ var Server = require('./lib/server').Server;
 
 var area = new Area();
 var r1 = new Room(area);
+var r2 = new Room(area);
+r1.link(r2, 'north');
 
 var server = new Server();
 server.startingRoom = r1;
